@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package products;
+
+// บริการสำหรับจัดการข้อมูลสินค้าทั้งหมด 
+service ProductService {
+  // ดึงข้อมูลรายละเอียดสินค้าตาม Product ID
+  rpc GetProduct (ProductRequest) returns (ProductResponse);
+}
+
+message ProductRequest {
+  int32 product_id = 1;
+}
+
+message ProductResponse {
+  int32 product_id = 1;
+  string name = 2;
+  int32 price = 3;
+}
