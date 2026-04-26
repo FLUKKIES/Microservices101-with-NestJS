@@ -18,6 +18,15 @@ import { LoggerMiddleware } from './middleware/logger.middleware';
           protoPath: join(__dirname, 'proto/products.proto'),
         },
       },
+      {
+        name: "KAFKA_SERVICE",
+        transport: Transport.KAFKA,
+        options: {
+          client: {
+            brokers: ["localhost:9092"]
+          }
+        }
+      } 
     ]),
   ],
   controllers: [AppController, ProductController],
