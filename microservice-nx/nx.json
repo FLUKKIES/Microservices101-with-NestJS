@@ -57,6 +57,11 @@
             "glob": "*.proto",
             "input": "proto",
             "output": "proto"
+          },
+          {
+            "glob": "*",
+            "input": "certs",
+            "output": "certs"
           }
         ]
       }

@@ -8,6 +8,7 @@ import { ProductController } from './product/product.controller';
 import { LoggerMiddleware } from './middleware/logger.middleware';
 import { AuthController } from './auth/auth.controller';
 import { UserController } from './user/user.controller';
+import { readFileSync } from 'fs';
 
 @Module({
   imports: [
@@ -42,8 +43,16 @@ import { UserController } from './user/user.controller';
         transport: Transport.TCP,
         options: {
           host: "localhost",
-          port: 8878
-        }
+          port: 8878,
+          tlsOptions: {
+            key: readFileSync(join(__dirname, "certs", "client.key")),
+            cert: readFileSync(join(__dirname, "certs", "client.crt")),
+            ca: readFileSync(join(__dirname, "certs", "ca.crt")),
+            requestCert: true,
+            rejectUnauthorized: true,
+          }
+        },
+
       }
     ]),
   ],
