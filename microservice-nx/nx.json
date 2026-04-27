@@ -43,7 +43,9 @@
         "apps/products-e2e/**/*",
         "apps/order-microservice-e2e/**/*",
         "apps/payment-microservice-e2e/**/*",
-        "apps/notification-microservice-e2e/**/*"
+        "apps/notification-microservice-e2e/**/*",
+        "apps/auth-service-e2e/**/*",
+        "apps/user-service-e2e/**/*"
       ]
     }
   ],

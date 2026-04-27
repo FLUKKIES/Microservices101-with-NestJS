@@ -6,6 +6,8 @@ import { PRODUCTS_PACKAGE_NAME } from '@myorg/types/proto/products';
 import { join } from 'path';
 import { ProductController } from './product/product.controller';
 import { LoggerMiddleware } from './middleware/logger.middleware';
+import { AuthController } from './auth/auth.controller';
+import { UserController } from './user/user.controller';
 
 @Module({
   imports: [
@@ -26,10 +28,26 @@ import { LoggerMiddleware } from './middleware/logger.middleware';
             brokers: ["localhost:9092"]
           }
         }
-      } 
+      },
+      {
+        name: "AUTH_SERVICE",
+        transport: Transport.TCP,
+        options: {
+          host: "localhost",
+          port: 8877
+        }
+      },
+      {
+        name: "USER_SERVICE",
+        transport: Transport.TCP,
+        options: {
+          host: "localhost",
+          port: 8878
+        }
+      }
     ]),
   ],
-  controllers: [AppController, ProductController],
+  controllers: [AppController, ProductController, AuthController, UserController],
   providers: [AppService],
 })
 export class AppModule implements NestModule {
